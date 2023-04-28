@@ -2,7 +2,7 @@ import { renderHook, waitFor } from '../../test/react'
 import { compiledErc20, devnetProvider } from '../../test/devnet'
 import { useContractRead } from './call'
 
-describe('useStarknetCall', () => {
+describe('useContractRead', () => {
   let address: string
   beforeAll(async () => {
     const tx = await devnetProvider.deployContract({ contract: compiledErc20 })

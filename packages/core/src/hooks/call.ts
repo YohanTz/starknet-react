@@ -63,7 +63,7 @@ export interface UseContractReadResult {
  * ```tsx
  * function Component() {
  *   const { address } = useAccount()
- *   const { data, isLoading, error, refetch } = useStarknetCall({
+ *   const { data, isLoading, error, refetch } = useContractRead({
  *     address: ethAddress,
  *     abi: compiledErc20.abi,
  *     functionName: 'balanceOf',
