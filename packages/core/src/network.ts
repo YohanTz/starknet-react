@@ -47,3 +47,13 @@ const KNOWN_CHAINS: Record<constants.StarknetChainId, Chain> = {
     },
   },
 }
+
+export function ethByChainId(chainId: constants.StarknetChainId): string {
+  return KNOWN_ETH_ADDRESSES[chainId]
+}
+
+const KNOWN_ETH_ADDRESSES: Record<constants.StarknetChainId, string> = {
+  [constants.StarknetChainId.MAINNET]: '',
+  [constants.StarknetChainId.TESTNET]: '',
+  [constants.StarknetChainId.TESTNET2]: '',
+}
