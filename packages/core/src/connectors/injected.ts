@@ -6,7 +6,12 @@ import {
   UserNotConnectedError,
   UserRejectedRequestError,
 } from '../errors'
-import { getStarknet, StarknetWindowObject, AccountChangeEventHandler } from 'get-starknet-core'
+import {
+  getStarknet,
+  StarknetWindowObject,
+  AccountChangeEventHandler,
+  SwitchStarknetChainParameter,
+} from 'get-starknet-core'
 
 /** Injected connector options. */
 export interface InjectedConnectorOptions {
@@ -127,6 +132,16 @@ export class InjectedConnector extends Connector<InjectedConnectorOptions> {
     }
 
     this._wallet.off('accountsChanged', accountChangeCb)
+  }
+
+  async switchNetwork(chainId: SwitchStarknetChainParameter): Promise<void> {
+    await this.ensureWallet()
+
+    if (!this._wallet) {
+      throw new ConnectorNotConnectedError()
+    }
+
+    this._wallet.request({ type: 'wallet_switchStarknetChain', params: chainId })
   }
 
   private async ensureWallet() {

@@ -1,4 +1,4 @@
-import { AccountChangeEventHandler } from 'get-starknet-core'
+import { AccountChangeEventHandler, SwitchStarknetChainParameter } from 'get-starknet-core'
 import { AccountInterface } from 'starknet'
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -19,6 +19,7 @@ export abstract class Connector<Options = any> {
   abstract disconnect(): Promise<void>
   abstract initEventListener(accountChangeCb: AccountChangeEventHandler): Promise<void>
   abstract removeEventListener(accountChangeCb: AccountChangeEventHandler): Promise<void>
+  abstract switchNetwork(chainId: SwitchStarknetChainParameter): Promise<void>
   abstract account(): Promise<AccountInterface | null>
   /** Unique connector id */
   abstract get id(): string
