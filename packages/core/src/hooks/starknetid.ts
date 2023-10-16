@@ -86,9 +86,7 @@ export function useStarkName({ address, contract }: StarkNameArgs): StarkNameRes
     queryKey: ['starkName'],
     queryFn: async () => {
       const provider = new Provider(library)
-      console.log('lookup ', address, ' on ', contract)
       const result = provider.getStarkName(address, contract)
-      console.log('result', result)
       if (result instanceof Error) throw new Error(result.message)
       return result
     },

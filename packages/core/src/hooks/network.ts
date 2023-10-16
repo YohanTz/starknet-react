@@ -41,3 +41,11 @@ export function useNetwork(): UseNetworkResult {
 
   return { chain }
 }
+
+// export interface UseSwitchNetworkResult {
+//   /** Function used to switch network. */
+// }
+
+export function useSwitchNetwork() {
+  return {}
+}
