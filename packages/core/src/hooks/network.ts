@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useStarknet } from '../providers'
 import { chainById, Chain } from '../network'
+import { useAccount } from './account'
 
 /** Value returned from `useNetwork`. */
 export interface UseNetworkResult {
@@ -47,5 +48,9 @@ export function useNetwork(): UseNetworkResult {
 // }
 
 export function useSwitchNetwork() {
-  return {}
+  const { connector } = useAccount()
+
+  const switchNetwork = connector !== undefined ? connector.switchNetwork : undefined
+
+  return { switchNetwork }
 }
